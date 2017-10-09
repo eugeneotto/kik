@@ -122,9 +122,9 @@ module Kik
 
 		def construct_keyboard options, hidden
 			keyboard = []
-			keyboard << {type: "suggested", hidden: !hidden, responses: []}
-			options.each do |option|
-				keyboard[0][:responses] << { type: "text", body: option }
+			keyboard << {to: options[:to], type: "suggested", hidden: !hidden, responses: []}
+			options[:keys].each do |key|
+				keyboard[0][:responses] << { type: "text", body: key }
 			end
 			keyboard
 		end
