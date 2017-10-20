@@ -124,7 +124,11 @@ module Kik
 			keyboard = []
 			keyboard << {to: options[:to], type: "suggested", hidden: !hidden, responses: []}
 			options[:keys].each do |key|
-				keyboard[0][:responses] << { type: "text", body: key }
+				if key.is_a?(Hash)
+					keyboard[0][:responses] << key
+				else
+					keyboard[0][:responses] << { type: "text", body: key }
+				end
 			end
 			keyboard
 		end
