@@ -122,7 +122,7 @@ module Kik
 
 		def construct_keyboard options, hidden
 			keyboard = []
-			keyboard << {to: options[:to], type: "suggested", hidden: !hidden, responses: []}
+			keyboard << {to: options[:to], type: "suggested", hidden: !hidden, responses: []}.compact
 			options[:keys].each do |key|
 				if key.is_a?(Hash)
 					keyboard[0][:responses] << key
